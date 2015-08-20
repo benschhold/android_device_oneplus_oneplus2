@@ -60,6 +60,7 @@ audio.offload.multiple.enabled=false
 audio.offload.pcm.24bit.enable=true
 audio.deep_buffer.media=true
 av.debug.disable.pers.cache=true
+ro.audio.flinger_standbytime_ms=300
 
 # Media
 mm.enable.smoothstreaming=true
