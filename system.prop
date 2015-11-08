@@ -20,6 +20,9 @@ DEVICE_PROVISIONED=1
 # system prop for the data modules
 ro.use_data_netmgrd=true
 
+# Disable QMI logspam
+persist.data.qmi.adb_logmask=0
+
 # NITZ
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
