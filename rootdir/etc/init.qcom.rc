@@ -162,8 +162,10 @@ on post-fs-data
     # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
+    rm /data/misc/perfd/default_values
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
+    rm /data/system/perfd/default_values
 
     # Touchscreen
     chown system radio /proc/touchpanel/double_tap_enable
