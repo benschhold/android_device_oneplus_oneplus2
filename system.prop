@@ -59,6 +59,7 @@ audio.offload.passthrough=false
 audio.offload.multiple.enabled=false
 audio.offload.pcm.24bit.enable=true
 audio.deep_buffer.media=true
+av.debug.disable.pers.cache=true
 
 # Media
 mm.enable.smoothstreaming=true
