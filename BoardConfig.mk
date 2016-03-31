@@ -69,8 +69,11 @@ BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
 TARGET_CUSTOM_DTBTOOL := dtbToolOP2
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+KERNEL_TOOLCHAIN := /home/bensch/blissm/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
+KERNEL_TOOLCHAIN_PATH := /home/bensch/blissm/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-
+
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
