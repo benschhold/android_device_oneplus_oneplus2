@@ -117,3 +117,6 @@ persist.timed.enable=true
 
 # Video
 vidc.enc.dcvs.extra-buff-count=2
+
+#ota 
+ro.ota.manifest=http://benschhold.github.io/xml/otabliss.xml
