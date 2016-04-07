@@ -58,7 +58,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 SCREEN_RATIO_PROPORTIONATE := true
-TARGET_SCREEN_ASPECT_RATIO := 16by
+TARGET_SCREEN_ASPECT_RATIO := 16by9
 
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
