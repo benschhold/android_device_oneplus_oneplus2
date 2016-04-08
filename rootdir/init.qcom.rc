@@ -360,6 +360,9 @@ on boot
     chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
     chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
 
+    chown root system /proc/s1302/virtual_key
+    chmod 0660 /proc/s1302/virtual_key
+
     # Buttons
     chown root system /proc/s1302/key_rep
     chmod 0660 /proc/s1302/key_rep
