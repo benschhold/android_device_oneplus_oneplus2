@@ -82,7 +82,7 @@ KERNEL_TOOLCHAIN_PATH := /home/bensch/blissm/prebuilts/gcc/linux-x86/aarch64/aar
 BOARD_USES_QCOM_HARDWARE := true
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
+BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
 # Audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -155,6 +155,9 @@ TARGET_RIL_VARIANT := caf
 
 # RPC
 TARGET_NO_RPC := true
+
+# Sensors
+USE_SENSOR_MULTI_HAL := true
 
 # Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
