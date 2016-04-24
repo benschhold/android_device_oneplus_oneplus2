@@ -245,6 +245,10 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
     wpa_supplicant_overlay.conf
+
+# Doze mode
+PRODUCT_PACKAGES += \
+    OneplusDoze
     
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
