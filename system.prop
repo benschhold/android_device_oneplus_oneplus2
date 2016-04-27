@@ -43,8 +43,10 @@ av.streaming.offload.enable=true
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=false
+persist.audio.ssr.3mic=false
 ro.qc.sdk.audio.fluencetype=fluence
 use.voice.path.for.pcm.voip=true
+tunnel.audio.encode=false
 
 # Media
 mm.enable.smoothstreaming=true
