@@ -21,7 +21,7 @@
 #
 
 # Inherit from oppo-common
--include device/oppo/common/BoardConfigCommon.mk
+#-include device/oppo/common/BoardConfigCommon.mk
 
 TARGET_OTA_ASSERT_DEVICE := OnePlus2,oneplus2
 
@@ -29,8 +29,6 @@ PLATFORM_PATH := device/oneplus/oneplus2
 
 BOARD_VENDOR := oneplus
 
-# Assertions
-TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := MSM8994
@@ -60,7 +58,7 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
@@ -72,17 +70,13 @@ BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
 TARGET_CUSTOM_DTBTOOL := dtbToolOP2
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
-TARGET_USES_UNCOMPRESSED_KERNEL := true
-KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
-KERNEL_TOOLCHAIN := /home/bensch/blissm/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
-KERNEL_TOOLCHAIN_PATH := /home/bensch/blissm/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-
-
-
+TARGET_USES_UNCOMPRESSED_KERNEL := false
+TARGET_GCC_VERSION_ARM64 := 4.9
 # QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_HARDWARE := false
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
 # Audio
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
@@ -91,7 +85,7 @@ AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
 AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
 AUDIO_FEATURE_ENABLED_MULTI_VOICE_SESSIONS := true
 BOARD_USES_ALSA_AUDIO := true
-USE_CUSTOM_AUDIO_POLICY := 1
+#USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
@@ -120,7 +114,7 @@ TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Crypto
-TARGET_HW_DISK_ENCRYPTION := true
+TARGET_HW_DISK_ENCRYPTION := false
 
 # Graphics
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
@@ -137,6 +131,7 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
+
 
 # Init
 TARGET_UNIFIED_DEVICE := true
@@ -182,7 +177,7 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
-CONFIG_EAP_PROXY := qmi
+#CONFIG_EAP_PROXY := qmi
 CONFIG_EAP_PROXY_DUAL_SIM := true
 CONFIG_EAP_PROXY_AKA_PRIME := true
 CONFIG_EAP_PROXY_MSM8994_TARGET := true
@@ -203,7 +198,7 @@ TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += device/oneplus/oneplus2/sepolicy
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true

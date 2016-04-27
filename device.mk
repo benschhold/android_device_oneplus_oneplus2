@@ -21,7 +21,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -60,25 +59,25 @@ TARGET_SCREEN_WIDTH := 1080
 SCREEN_RATIO_PROPORTIONATE := true
 TARGET_SCREEN_ASPECT_RATIO := 16by9
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Audio
-PRODUCT_PACKAGES += \
-    audiod \
-    audio.a2dp.default \
-    audio.primary.msm8994 \
-    audio.r_submix.default \
-    audio.usb.default \
-    audio_policy.msm8994 \
-    libaudio-resampler \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    tinymix
+#PRODUCT_PACKAGES += \
+ #   audiod \
+ #   audio.a2dp.default \
+ #   audio.primary.msm8994 \
+ #   audio.r_submix.default \
+ #   audio.usb.default \
+ #   audio_policy.msm8994 \
+ #   libaudio-resampler \
+ #   libqcompostprocbundle \
+ #   libqcomvisualizer \
+ #   libqcomvoiceprocessing \
+ #   tinymix
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
@@ -105,8 +104,8 @@ PRODUCT_PACKAGES += \
     libantradio
 
 # Camera
-PRODUCT_PACKAGES += \
-    Snap
+#PRODUCT_PACKAGES += \
+   # Snap
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -120,13 +119,16 @@ PRODUCT_PACKAGES += \
     services-ext
 
 # Display
-PRODUCT_PACKAGES += \
-    copybit.msm8994 \
-    gralloc.msm8994 \
-    hwcomposer.msm8994 \
-    memtrack.msm8994 \
-    liboverlay \
-    libtinyxml
+PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+#PRODUCT_PACKAGES += \
+ #   copybit.msm8994 \
+ #   gralloc.msm8994 \
+ #   hwcomposer.msm8994 \
+ #   memtrack.msm8994 \
+ #   liboverlay \
+ #   libtinyxml
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -185,24 +187,24 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # OMX
-PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libdashplayer \
-    libdivxdrmdecrypt \
-    libextmedia_jni \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxSwVencMpeg4 \
-    libOmxSwVencHevc \
-    libOmxVdec \
-    libOmxVdecHevc \
-    libOmxVenc \
-    libOmxVidcCommon \
-    libstagefrighthw \
-    libstagefright_soft_flacdec
+#PRODUCT_PACKAGES += \
+#    libc2dcolorconvert \
+#    libdashplayer \
+#    libdivxdrmdecrypt \
+#    libextmedia_jni \
+#    libOmxAacEnc \
+#    libOmxAmrEnc \
+#    libOmxCore \
+#    libOmxEvrcEnc \
+#    libOmxQcelp13Enc \
+#    libOmxSwVencMpeg4 \
+#    libOmxSwVencHevc \
+#    libOmxVdec \
+#    libOmxVdecHevc \
+#    libOmxVenc \
+#    libOmxVidcCommon \
+#    libstagefrighthw \
+#    libstagefright_soft_flacdec
 
 # Power
 PRODUCT_PACKAGES += \
@@ -265,9 +267,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
 
 PRODUCT_PACKAGES += \
-    ipacm \
-    ipacm-diag \
-    IPACM_cfg.xml \
+    #ipacm \
+    #ipacm-diag \
+    #IPACM_cfg.xml \
     libwifi-hal-qcom \
     libqsap_sdk \
     libQWiFiSoftApCfg \
