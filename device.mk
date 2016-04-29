@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
+$(call inherit-product-if-exists, base.mk)
 $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
 # Overlays
@@ -49,6 +49,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+
+
+
+
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -56,8 +60,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
-SCREEN_RATIO_PROPORTIONATE := true
-TARGET_SCREEN_ASPECT_RATIO := 16by9
+
 
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
@@ -66,18 +69,20 @@ $(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk
 PRODUCT_CHARACTERISTICS := nosdcard
 
 # Audio
-#PRODUCT_PACKAGES += \
- #   audiod \
- #   audio.a2dp.default \
- #   audio.primary.msm8994 \
- #   audio.r_submix.default \
- #   audio.usb.default \
- #   audio_policy.msm8994 \
- #   libaudio-resampler \
- #   libqcompostprocbundle \
- #   libqcomvisualizer \
- #   libqcomvoiceprocessing \
- #   tinymix
+
+
+PRODUCT_PACKAGES += \
+    audiod \
+    audio.a2dp.default \
+    audio.primary.msm8994 \
+    audio.r_submix.default \
+    audio.usb.default \
+    audio_policy.msm8994 \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing \
+    tinymix
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdb/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
@@ -118,17 +123,21 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     services-ext
 
+
+# Kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/dt.img:dt.img
+
 # Display
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
 
 #PRODUCT_PACKAGES += \
- #   copybit.msm8994 \
- #   gralloc.msm8994 \
- #   hwcomposer.msm8994 \
- #   memtrack.msm8994 \
- #   liboverlay \
- #   libtinyxml
+    copybit.msm8994 \
+    gralloc.msm8994 \
+    hwcomposer.msm8994 \
+    memtrack.msm8994 \
+    liboverlay \
+    libtinyxml
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -187,24 +196,24 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
 # OMX
-#PRODUCT_PACKAGES += \
-#    libc2dcolorconvert \
-#    libdashplayer \
-#    libdivxdrmdecrypt \
-#    libextmedia_jni \
-#    libOmxAacEnc \
-#    libOmxAmrEnc \
-#    libOmxCore \
-#    libOmxEvrcEnc \
-#    libOmxQcelp13Enc \
-#    libOmxSwVencMpeg4 \
-#    libOmxSwVencHevc \
-#    libOmxVdec \
-#    libOmxVdecHevc \
-#    libOmxVenc \
-#    libOmxVidcCommon \
-#    libstagefrighthw \
-#    libstagefright_soft_flacdec
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libextmedia_jni \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
+    libOmxSwVencHevc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libstagefrighthw \
+    libstagefright_soft_flacdec
 
 # Power
 PRODUCT_PACKAGES += \

@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2015, The CyanogenMod Project
+   Copyright (c) 2013, The Linux Foundation. All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -27,42 +27,18 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdlib.h>
+#ifndef __INIT_MSM__H__
+#define __INIT_MSM__H__
 
-#include "vendor_init.h"
-#include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include <sys/system_properties.h>
 
-#include "init_msm.h"
+#define PROP_HWROTATE    "ro.sf.hwrotation"
+#define PROP_LCDDENSITY  "ro.sf.lcd_density"
+#define PROP_QEMU_NAVKEY "qemu.hw.mainkeys"
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type) {
-    char device[PROP_VALUE_MAX];
-    char rf_version[PROP_VALUE_MAX];
-    int rc;
+#define UNUSED(a)       ((void)(a))
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
+void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *board_type);
 
-    rc = property_get("ro.du.device", device);
-    if (!rc || !ISMATCH(device, "oneplus2"))
-        return;
-
-    property_get("ro.boot.rf_v1", rf_version);
-
-    if (strstr(rf_version, "14")) {
-        /* Chinese */
-        property_set("ro.product.model", "ONE A2001");
-        property_set("ro.rf_version", "TDD_FDD_Ch_All");
-    } else if (strstr(rf_version, "24")) {
-        /* Asia/Europe */
-        property_set("ro.product.model", "ONE A2003");
-        property_set("ro.rf_version", "TDD_FDD_Eu");
-    } else if (strstr(rf_version, "34")) {
-        /* America */
-        property_set("ro.product.model", "ONE A2005");
-        property_set("ro.rf_version", "TDD_FDD_Am");
-    }
-}
-
+#endif /* __INIT_MSM__H__ */

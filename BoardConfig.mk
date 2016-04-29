@@ -21,7 +21,7 @@
 #
 
 # Inherit from oppo-common
-#-include device/oppo/common/BoardConfigCommon.mk
+-include device/oppo/common/BoardConfigCommon.mk
 
 TARGET_OTA_ASSERT_DEVICE := OnePlus2,oneplus2
 
@@ -50,7 +50,7 @@ TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53.a57
+TARGET_2ND_CPU_VARIANT := cortex-a53
 
 TARGET_CPU_CORTEX_A53 := true
 
@@ -58,6 +58,7 @@ TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
+BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/oneplus2/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-5 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
@@ -66,19 +67,22 @@ BOARD_KERNEL_IMAGE_NAME := Image
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-BOARD_MKBOOTIMG_ARGS := --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --dt device/oneplus/oneplus2/dt.img --tags_offset 0x00000100
 TARGET_CUSTOM_DTBTOOL := dtbToolOP2
 TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
-TARGET_USES_UNCOMPRESSED_KERNEL := false
+TARGET_USES_UNCOMPRESSED_KERNEL := true
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_GCC_VERSION_ARM64 := 4.9
+TARGET_USE_CM_RAMDISK := true
 # QCOM hardware
-BOARD_USES_QCOM_HARDWARE := false
+BOARD_USES_QCOM_HARDWARE := true
 
 # ANT+
-#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
+BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
 
 # Audio
+
 AUDIO_FEATURE_ENABLED_ACDB_LICENSE := true
 AUDIO_FEATURE_ENABLED_COMPRESS_CAPTURE := true
 AUDIO_FEATURE_ENABLED_DS2_DOLBY_DAP := true
