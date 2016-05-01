@@ -10,4 +10,4 @@ binder_call(mediaserver, rild)
 allow mediaserver shell_data_file:dir search;
 
 allow mediaserver sensorservice_service:service_manager find;
-allow mediaserver system_server:unix_stream_socket read;
+allow mediaserver system_server:unix_stream_socket { read write };
