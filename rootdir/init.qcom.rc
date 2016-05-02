@@ -443,6 +443,16 @@ on boot
     write /proc/sys/vm/dirty_ratio 5
     write /proc/sys/vm/dirty_background_ratio 1
 
+    # adaptive LMK + per-process reclaim
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 1
+    write /sys/module/process_reclaim/parameters/pressure_max 70
+    write /sys/module/process_reclaim/parameters/swap_opt_eff 30
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/process_reclaim/parameters/pressure_min 10
+    write /sys/module/process_reclaim/parameters/per_swap_size 1024
+    write /sys/module/lowmemorykiller/parameters/minfree 18432,23040,27648,32256,55296,80640
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+
     # Modify for drv2605 support
     chmod 0666 /dev/drv2605
     chown system system /dev/drv2605
