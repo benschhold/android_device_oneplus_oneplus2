@@ -507,12 +507,6 @@ service adsprpcd /system/bin/adsprpcd
     user media
     group media
 
-service energy-awareness /system/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
-
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
 
