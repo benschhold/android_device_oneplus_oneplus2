@@ -19,8 +19,8 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 19000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 98
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 19000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "65 460000:75 960000:80"
@@ -34,18 +34,14 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_sched_load 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/above_hispeed_delay 19000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 98
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 19000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/go_hispeed_load 99
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/timer_rate 20000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1248000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "70 960000:80 1248000:85"
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
-
-    # insert core_ctl module and use conservative paremeters
-    # insmod /system/lib/modules/msm_core_ctl.ko
-    # write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 1
 
     # bring all CPUs online
     write /sys/devices/system/cpu/cpu5/online 1
@@ -64,15 +60,6 @@ on enable-low-power
     # input boost configuration
     write /sys/module/cpu_boost/parameters/input_boost_freq "0:1344000"
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-
-    # configure core_ctl module parameters
-    # write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    # write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
-    # write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 72
-    # write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 28
-    # write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms  100
-    # write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-    # write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
 
     # setting b.L scheduler parameters
     write /proc/sys/kernel/sched_migration_fixup 1
@@ -103,10 +90,6 @@ on enable-low-power
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
 
     start perfd
-
-on charger
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
 
 on class_start:late_start
     trigger enable-low-power

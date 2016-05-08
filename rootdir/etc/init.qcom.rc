@@ -159,13 +159,12 @@ on post-fs-data
     mkdir /data/camera 0770 media camera
     mkdir /data/misc/camera 0770 camera camera
 
-    # Create PERFD deamon related dirs
+    # Create folder for perf daemon
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
-    rm /data/misc/perfd/default_values
     mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
     rm /data/system/perfd/default_values
+    chmod 2770 /data/system/perfd
 
     # Touchscreen
     chown system radio /proc/touchpanel/double_tap_enable
@@ -406,8 +405,6 @@ on boot
     chown system system /system/xbin/tcpdump
     chmod 0777  /system/xbin/tcpdump
 
-    write /sys/module/printk/parameters/print_wall_time 1
-
     # Access permission for secure touch
     chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
     chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
@@ -463,7 +460,7 @@ service qseecomd /system/bin/qseecomd
 service perfd /system/vendor/bin/perfd
     class main
     user root
-    group root
+    group system
     disabled
     writepid /dev/cpuset/system-background/tasks
 
@@ -492,10 +489,10 @@ on property:sys.shutdown.requested=*
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
-    socket thermal-send-client stream 0666 system system
+    socket thermal-send-client stream 0660 system system
     socket thermal-recv-client stream 0660 system system
-    socket thermal-recv-passive-client stream 0666 system system
-    group root
+    socket thermal-recv-passive-client stream 0660 system system
+    group root radio
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -777,6 +774,23 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
+
+on charger
+   #set cpu4,5 online first, or they can't get into low power consumption mode
+   write /sys/devices/system/cpu/cpu4/online 1
+   write /sys/devices/system/cpu/cpu5/online 1
+   #low power governing
+   write /sys/devices/soc.0/qcom,bcl.60/mode disable
+   write /sys/devices/soc.0/qcom,bcl.60/hotplug_mask 0
+   write /sys/devices/soc.0/qcom,bcl.60/hotplug_soc_mask 0
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+   write /sys/devices/system/cpu/cpu1/online 0
+   write /sys/devices/system/cpu/cpu2/online 0
+   write /sys/devices/system/cpu/cpu3/online 0
+   write /sys/devices/system/cpu/cpu4/online 0
+   write /sys/devices/system/cpu/cpu5/online 0
+   write /sys/devices/system/cpu/cpu6/online 0
+   write /sys/devices/system/cpu/cpu7/online 0
 
 service charger /charger
     class charger
