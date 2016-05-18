@@ -9,3 +9,7 @@ type fingerprint_device, dev_type;
 
 # laser auto focus
 type stm_sensor, file_type;
+
+type proc_kernel_sched, sysfs_type, fs_type;
+type sysfs_performance, sysfs_type, fs_type;
+type sysfs_power_management, fs_type, sysfs_type;

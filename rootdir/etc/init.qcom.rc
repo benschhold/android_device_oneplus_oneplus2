@@ -166,6 +166,9 @@ on post-fs-data
     rm /data/system/perfd/default_values
     chmod 2770 /data/system/perfd
 
+    # Create IOP daemon dir
+    mkdir /data/misc/iop 0770 root system
+
     # Touchscreen
     chown system radio /proc/touchpanel/double_tap_enable
     chmod 0660 /proc/touchpanel/double_tap_enable
@@ -188,6 +191,16 @@ on early-boot
 
 on boot
     symlink /dev/block/platform/soc.0 /dev/block/bootdevice
+
+    # execute script to set initial CPU settings
+    # don't run as a service to avoid race conditions
+    exec - root system -- /system/bin/init.op2.power.sh
+
+    # update foreground cpuset now that processors are up
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 4-7
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-3
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -461,7 +474,12 @@ service perfd /system/vendor/bin/perfd
     class main
     user root
     group system
-    disabled
+    writepid /dev/cpuset/system-background/tasks
+
+service iop /system/bin/iop
+    class main
+    user root
+    group root
     writepid /dev/cpuset/system-background/tasks
 
 service per_mgr /system/bin/pm-service
@@ -505,7 +523,11 @@ service adsprpcd /system/bin/adsprpcd
     group media
 
 on property:sys.boot_completed=1
-    write /dev/kmsg "Boot completed "
+    # allow CPUs to go in deeper idle state than C0
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+
+    # set BFQ
+    setprop sys.io.scheduler "bfq"
 
 on property:bluetooth.isEnabled=true
     start btwlancoex
