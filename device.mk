@@ -197,12 +197,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/perf-profile4.conf:system/vendor/etc/perf-profile4.conf \
     $(LOCAL_PATH)/configs/perf-profile5.conf:system/vendor/etc/perf-profile5.conf
 
-# QMI
-PRODUCT_PACKAGES += \
-    dsi_config.xml \
-    netmgr_config.xml \
-    qmi_config.xml
-
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \

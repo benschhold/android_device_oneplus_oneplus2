@@ -580,6 +580,11 @@ service dpmd /system/bin/dpmd
     class late_start
     socket dpmd stream 660 root system
 
+service qti /system/vendor/bin/qti
+    class main
+    user radio
+    group radio net_raw diag usb net_admin
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
