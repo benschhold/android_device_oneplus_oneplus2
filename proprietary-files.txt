@@ -317,6 +317,7 @@ etc/firmware/venus.mbn
 etc/firmware/venus.mdt
 
 # Perf
+bin/energy-awareness
 bin/iop
 bin/msm_irqbalance
 lib64/libqti-iop.so

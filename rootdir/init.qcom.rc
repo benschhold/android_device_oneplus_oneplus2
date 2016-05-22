@@ -796,6 +796,12 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     group root
     writepid /dev/cpuset/system-background/tasks
 
+service energy-awareness /system/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
+
 on charger
    #set cpu4,5 online first, or they can't get into low power consumption mode
    write /sys/devices/system/cpu/cpu4/online 1
