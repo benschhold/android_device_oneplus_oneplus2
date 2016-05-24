@@ -249,6 +249,10 @@ PRODUCT_PACKAGES += \
 # Doze mode
 PRODUCT_PACKAGES += \
     OneplusDoze
+
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
     
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
