@@ -20,6 +20,7 @@
 #include <cutils/log.h>
 #include <hardware/hardware.h>
 #include <hardware/fingerprint.h>
+#include <utils/Endian.h>
 #include <utils/KeyedVector.h>
 #include <utils/String8.h>
 #include "Fpc1020Sensor.h"
