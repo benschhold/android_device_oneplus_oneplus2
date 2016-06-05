@@ -180,8 +180,6 @@ on post-fs-data
     mkdir /data/misc/camera 0770 camera camera
 
     # Create folder for perf daemon
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     rm /data/system/perfd/default_values
     chmod 2770 /data/system/perfd
@@ -500,6 +498,7 @@ service perfd /system/vendor/bin/perfd
     class main
     user root
     group system
+    socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
 service iop /system/bin/iop
