@@ -59,14 +59,14 @@ public final class Utils {
     }
 
     protected static void startService(Context context) {
-        if (!Utils.isServiceRunning(DozeService.class, context)) {
+        if (!isServiceRunning(DozeService.class, context)) {
             if (DEBUG) Log.d(TAG, "Starting service");
             context.startService(new Intent(context, DozeService.class));
         }
     }
 
     protected static void stopService(Context context) {
-        if (Utils.isServiceRunning(DozeService.class, context)) {
+        if (isServiceRunning(DozeService.class, context)) {
             if (DEBUG) Log.d(TAG, "Stopping service");
             context.stopService(new Intent(context, DozeService.class));
         }
