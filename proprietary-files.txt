@@ -437,6 +437,7 @@ vendor/lib64/libmm-qdcm.so
 # Qualcomm framework
 bin/irsc_util
 etc/permissions/qti_permissions.xml
+-lib64/libwpa_qmi_eap_proxy.so
 -vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 -vendor/lib/libdsutils.so

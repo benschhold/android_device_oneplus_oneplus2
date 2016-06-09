@@ -239,6 +239,8 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     hostapd.accept \
     hostapd.deny \
+    libqsap_sdk \
+    libQWiFiSoftApCfg \
     libwpa_client \
     p2p_supplicant_overlay.conf \
     wpa_supplicant \
