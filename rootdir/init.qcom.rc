@@ -330,8 +330,7 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # 2015.3.26 Likelong@camera chmod /dev/stmvl6180_ranging to test Laser AF in factory mode
-    chown system system /dev/stmvl6180_ranging
+    # Laser AF
     chown system system /system/bin/laser_init
     chmod 0750 /system/bin/laser_init
 

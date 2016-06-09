@@ -115,6 +115,10 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    camera.msm8994 \
+    laser_init \
+    libmm-qcamera \
+    sensors.hal.tof \
     Snap
 
 # Charger

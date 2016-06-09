@@ -1,0 +1,1 @@
+allow init stm_sensor_device:chr_file relabelto;
