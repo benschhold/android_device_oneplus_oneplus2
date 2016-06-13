@@ -91,18 +91,25 @@ write /sys/module/msm_performance/parameters/cpu_max_freq "4:4294967295 5:429496
 write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000"
 write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
-# core-ctl, if available
-if [ -e /system/lib/modules/msm_core_ctl.ko ]; then
-    insmod /system/lib/modules/msm_core_ctl.ko
+# h-cube, if available
+if [ -e /system/lib/modules/hcube.ko ]; then
+    insmod /system/lib/modules/hcube.ko
     if [ $? -eq 0 ]; then
         restorecon -R /sys/devices/system/cpu/cpu0/core_ctl/
         restorecon -R /sys/devices/system/cpu/cpu4/core_ctl/
-        write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
-        write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
-        write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
+        write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 2
+        write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+        write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 72
+        write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 28
         write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
         write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
         write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 2
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_on 1
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_down_scale_on 1
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_thres_on 1
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_ro_use_gourd 1
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_correl_lvs "0 0 768000 1248000"
+        write /sys/devices/system/cpu/cpu4/core_ctl/hc_correl_use_pcost 1
     fi
 fi
 
