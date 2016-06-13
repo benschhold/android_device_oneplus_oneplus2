@@ -128,5 +128,8 @@ wifi.interface=wlan0
 # set max starting background services
 ro.config.max_starting_bg=8
 
+# set background apps limit
+ro.sys.fw.bg_apps_limit=20
+
 # Factory reset protection
 ro.frp.pst=/dev/block/bootdevice/by-name/config
