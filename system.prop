@@ -68,7 +68,10 @@ media.aac_51_output_enabled=true
 
 # Bluetooth
 bluetooth.enable_timeout_ms=12000
+bluetooth.hfp.client=1
 qcom.bluetooth.soc=rome
+ro.bluetooth.emb_wp_mode=true
+ro.bluetooth.wipower=true
 
 # CEC
 ro.hdmi.device_type=4
