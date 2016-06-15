@@ -1,6 +1,5 @@
-allow sensors sysfs_ps_sensor:file getattr;
-allow sensors input_device:dir { search write };
-allow sensors input_device:chr_file { link getattr relabelfrom };
-allow sensors device:dir { add_name write };
-allow sensors security_file:file { read open };
-allow sensors stm_sensor_device:chr_file { relabelto };
+allow sensors cam_sysfs:file getattr;
+allow sensors device:dir { write add_name };
+allow sensors input_device:chr_file { relabelfrom getattr link };
+allow sensors stm_sensor:chr_file relabelto;
+allow sensors input_device:dir search;

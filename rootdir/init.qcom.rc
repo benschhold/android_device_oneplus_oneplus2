@@ -331,8 +331,8 @@ on boot
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
     # Laser AF
-    chown system system /system/bin/laser_init
-    chmod 0750 /system/bin/laser_init
+    chown system system /dev/stmvl6180_ranging
+    symlink /dev/input/event2 /dev/stm_sensor
 
     # Add for fpc fingerprints permission
     chmod -h 777 /dev/qseecom
@@ -481,12 +481,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
-
-service laserinit /system/bin/laser_init
-    class late_start
-    user root
-    group root
-    oneshot
 
 service qseecomd /system/bin/qseecomd
     class core
