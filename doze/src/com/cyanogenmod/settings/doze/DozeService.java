@@ -36,15 +36,16 @@ public class DozeService extends Service {
         if (DEBUG) Log.d(TAG, "Creating service");
         mProximitySensor = new ProximitySensor(this);
         mTiltSensor = new TiltSensor(this);
+
+        IntentFilter screenStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
+        screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        screenStateFilter.addAction(Intent.ACTION_DOZE_PULSE_REQUESTED);
+        this.registerReceiver(mScreenStateReceiver, screenStateFilter);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (DEBUG) Log.d(TAG, "Starting service");
-        IntentFilter screenStateFilter = new IntentFilter(Intent.ACTION_SCREEN_ON);
-        screenStateFilter.addAction(Intent.ACTION_SCREEN_OFF);
-        screenStateFilter.addAction(Intent.ACTION_DOZE_PULSE_REQUESTED);
-        this.registerReceiver(mScreenStateReceiver, screenStateFilter);
         return START_STICKY;
     }
 

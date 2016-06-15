@@ -40,36 +40,14 @@ public final class Utils {
     protected static final String GESTURE_POCKET_KEY = "gesture_pocket";
     protected static final String PROXIMITY_ALWAYS_KEY = "proximity_always";
 
-    private static boolean mTiltAlwaysEnabled = false;
-    private static boolean mPickUpEnabled = false;
-    private static boolean mHandwaveGestureEnabled = false;
-    private static boolean mPocketGestureEnabled = false;
-    private static boolean mProximityAlwaysEnabled = false;
-
-    private static SharedPreferences mSharedPrefs;
-
-    private static boolean isServiceRunning(Class<?> serviceClass, Context context) {
-        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     protected static void startService(Context context) {
-        if (!isServiceRunning(DozeService.class, context)) {
-            if (DEBUG) Log.d(TAG, "Starting service");
-            context.startService(new Intent(context, DozeService.class));
-        }
+        if (DEBUG) Log.d(TAG, "Starting service");
+        context.startService(new Intent(context, DozeService.class));
     }
 
     protected static void stopService(Context context) {
-        if (isServiceRunning(DozeService.class, context)) {
-            if (DEBUG) Log.d(TAG, "Stopping service");
-            context.stopService(new Intent(context, DozeService.class));
-        }
+        if (DEBUG) Log.d(TAG, "Stopping service");
+        context.stopService(new Intent(context, DozeService.class));
     }
 
     protected static boolean isDozeEnabled(Context context) {
@@ -91,37 +69,32 @@ public final class Utils {
     protected static void launchDozePulse(Context context) {
         if (DEBUG) Log.d(TAG, "Launch doze pulse");
         context.sendBroadcastAsUser(new Intent(DOZE_INTENT),
-		new UserHandle(UserHandle.USER_CURRENT));
+                new UserHandle(UserHandle.USER_CURRENT));
     }
 
     protected static boolean pickUpEnabled(Context context) {
-        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mPickUpEnabled = mSharedPrefs.getBoolean(PICK_UP_KEY, false);
-        return mPickUpEnabled;
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(PICK_UP_KEY, false);
     }
 
     protected static boolean tiltAlwaysEnabled(Context context) {
-        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mTiltAlwaysEnabled = mSharedPrefs.getBoolean(TILT_ALWAYS_KEY, false);
-        return mTiltAlwaysEnabled;
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(TILT_ALWAYS_KEY, false);
     }
 
     protected static boolean handwaveGestureEnabled(Context context) {
-        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mHandwaveGestureEnabled = mSharedPrefs.getBoolean(GESTURE_HAND_WAVE_KEY, false);
-        return mHandwaveGestureEnabled;
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(GESTURE_HAND_WAVE_KEY, false);
     }
 
     protected static boolean pocketGestureEnabled(Context context) {
-        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mPocketGestureEnabled = mSharedPrefs.getBoolean(GESTURE_POCKET_KEY, false);
-        return mPocketGestureEnabled;
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(GESTURE_POCKET_KEY, false);
     }
 
     protected static boolean proximityAlwaysEnabled(Context context) {
-        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mProximityAlwaysEnabled = mSharedPrefs.getBoolean(PROXIMITY_ALWAYS_KEY, false);
-        return mProximityAlwaysEnabled;
+        return PreferenceManager.getDefaultSharedPreferences(context)
+                .getBoolean(PROXIMITY_ALWAYS_KEY, false);
     }
 
     protected static boolean sensorsEnabled(Context context) {

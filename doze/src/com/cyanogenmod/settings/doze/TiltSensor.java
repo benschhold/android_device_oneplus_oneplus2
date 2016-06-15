@@ -49,7 +49,7 @@ public class TiltSensor implements SensorEventListener {
         mSensorManager = (SensorManager) mContext.getSystemService(Context.SENSOR_SERVICE);
         mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_TILT_DETECTOR);
         mSensorWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,
-		"SensorWakeLock");
+                "SensorWakeLock");
     }
 
     @Override
