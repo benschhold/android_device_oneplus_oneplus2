@@ -18,8 +18,11 @@ persist.radio.rat_on=combine
 telephony.lteOnGsmDevice=1
 DEVICE_PROVISIONED=1
 
-# system prop for the data modules
+# Data modules
 ro.use_data_netmgrd=true
+persist.data.netmgrd.qos.enable=true
+persist.data.mode=concurrent
+ro.data.large_tcp_window_size=true
 
 # Disable QMI logspam
 persist.data.qmi.adb_logmask=0
