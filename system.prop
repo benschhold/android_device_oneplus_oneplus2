@@ -107,7 +107,7 @@ vidc.enc.dcvs.extra-buff-count=2
 
 # Camera
 persist.camera.cpp.duplication=false
-persist.camera.HAL3.enabled=0
+camera.disable_zsl_mode=1
 
 # Time services
 persist.timed.enable=true
