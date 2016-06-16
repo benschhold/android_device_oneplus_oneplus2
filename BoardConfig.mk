@@ -186,6 +186,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 
 # CNE and DPM
 BOARD_USES_QCNE := true
+BOARD_USES_DPM := true
 TARGET_LDPRELOAD := libNimsWrap.so
 
 # Oneplus modifications

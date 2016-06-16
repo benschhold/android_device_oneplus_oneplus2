@@ -87,7 +87,8 @@ PRODUCT_PACKAGES += \\
 
 PRODUCT_PACKAGES += \\
     CNEService \\
-    dpmserviceapp
+    com.qti.dpmframework \\
+    dpmapi
 
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
@@ -397,14 +398,23 @@ LOCAL_CERTIFICATE := platform
 include \$(BUILD_PREBUILT)
 
 include \$(CLEAR_VARS)
-LOCAL_MODULE := dpmserviceapp
+LOCAL_MODULE := com.qti.dpmframework
 LOCAL_MODULE_OWNER := $VENDOR
-LOCAL_SRC_FILES := proprietary/priv-app/dpmserviceapp/dpmserviceapp.apk
+LOCAL_SRC_FILES := proprietary/framework/com.qti.dpmframework.jar
 LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_SUFFIX := \$(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_MODULE_CLASS := APPS
-LOCAL_PRIVILEGED_MODULE := true
-LOCAL_CERTIFICATE := platform
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := dpmapi
+LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_SRC_FILES := proprietary/framework/dpmapi.jar
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_CERTIFICATE := PRESIGNED
 include \$(BUILD_PREBUILT)
 
 \$(shell mkdir -p \$(PRODUCT_OUT)/system/vendor/lib/egl && pushd \$(PRODUCT_OUT)/system/vendor/lib > /dev/null && ln -s egl/libEGL_adreno.so libEGL_adreno.so && popd > /dev/null)
