@@ -499,10 +499,7 @@ typedef struct {
 } RIL_Dial;
 
 typedef struct {
-    #ifdef VENDOR_EDIT
-    int cla;
-    #endif /* VENDOR_EDIT */
-
+    int unknown;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
@@ -517,10 +514,7 @@ typedef struct {
 } RIL_SIM_IO_v5;
 
 typedef struct {
-    #ifdef VENDOR_EDIT
-    int cla;
-    #endif /* VENDOR_EDIT */
-
+    int unknown;
     int command;    /* one of the commands listed for TS 27.007 +CRSM*/
     int fileid;     /* EF id */
     char *path;     /* "pathid" from TS 27.007 +CRSM command.
@@ -4046,7 +4040,7 @@ typedef struct {
  * RIL_REQUEST_VOICE_RADIO_TECH
  *
  * Query the radio technology type (3GPP/3GPP2) used for voice. Query is valid only
- * when radio state is not RADIO_STATE_UNAVAILABLE
+ * when radio state is RADIO_STATE_ON
  *
  * "data" is NULL
  * "response" is int *
@@ -4565,53 +4559,6 @@ typedef struct {
  * GENERIC_FAILURE
  */
 #define RIL_REQUEST_SIM_GET_ATR 136
-#ifdef VENDOR_EDIT
-
-#define RIL_REQUEST_OEM_BASE	137
-
-#define RIL_REQUEST_FACTORY_MODE_NV_PROCESS 138 //(RIL_REQUEST_OEM_BASE + 1)
-
-#define RIL_REQUEST_FACTORY_MODE_MODEM_GPIO 139 //(RIL_REQUEST_OEM_BASE + 2)
-
-/**
- * RIL_REQUEST_GET_BAND_MODE
- *
- *  get current band mode
- *
- * "response" is int
- *
- * Valid errors:
- *  SUCCESS
- *  GENERIC_FAILURE
- */
-
-#define RIL_REQUEST_GET_BAND_MODE 140 //(RIL_REQUEST_OEM_BASE + 3)
-
-//#ifdef VENDOR_EDIT
-#define RIL_REQUEST_REPORT_BOOTUPNVRESTOR_STATE 141 //(RIL_REQUEST_OEM_BASE + 4)
-
-#define RIL_REQUEST_GET_RFFE_DEV_INFO 142 //(RIL_REQUEST_OEM_BASE + 5)
-
-// "data" is a const RIL_SIM_IO *
-// "response" is a const RIL_SIM_IO_Response *
-#define RIL_REQUEST_SIM_TRANSMIT_BASIC 144 //(RIL_REQUEST_OEM_BASE+7)
-// "data" is a const char * containing the AID of the applet
-// "response" is a int * containing the channel id
-//#define RIL_REQUEST_SIM_OPEN_CHANNEL 145 //(RIL_REQUEST_OEM_BASE+8)
-// "data" is a const int * containing the channel id
-// "response" is NULL
-//#define RIL_REQUEST_SIM_CLOSE_CHANNEL 146 //(RIL_REQUEST_OEM_BASE+9)
-// "data" is a const RIL_SIM_IO *
-// "response" is a const RIL_SIM_IO_Response *
-#define RIL_REQUEST_SIM_TRANSMIT_CHANNEL 147 //(RIL_REQUEST_OEM_BASE+10)
-
-#endif /* VENDOR_EDIT */
-
-#define RIL_REQUEST_GO_TO_ERROR_FATAL 148 //(RIL_REQUEST_OEM_BASE+11)
-#define RIL_REQUEST_GET_MDM_BASEBAND  149 //(RIL_REQUEST_OEM_BASE+12)
-//}add end
-
-#define RIL_REQUEST_SET_TDD_LTE 150  //(RIL_REQUEST_OEM_BASE+13)
 
 /**
  * RIL_REQUEST_CAF_SIM_OPEN_CHANNEL_WITH_P2
@@ -4634,7 +4581,7 @@ typedef struct {
  *  MISSING_RESOURCE
  *  NO_SUCH_ELEMENT
  */
-#define RIL_REQUEST_CAF_SIM_OPEN_CHANNEL_WITH_P2 151
+#define RIL_REQUEST_CAF_SIM_OPEN_CHANNEL_WITH_P2 137
 
 /**
  * RIL_REQUEST_SET_MAX_TRANSMIT_POWER
@@ -4644,7 +4591,7 @@ typedef struct {
  * "response" is void
  */
 
-#define RIL_REQUEST_SET_MAX_TRANSMIT_POWER 152
+#define RIL_REQUEST_SET_MAX_TRANSMIT_POWER 139
 
 /***********************************************************************/
 
@@ -5243,14 +5190,6 @@ typedef struct {
  *
  */
 #define RIL_UNSOL_LCEDATA_RECV 1045
-
-//#ifdef VENDOR_EDIT
-#define RIL_UNSOL_OEM_NV_BACKUP_RESPONSE 1046
-//#endif
-
-//#ifdef VENDOR_EDIT
-#define RIL_UNSOL_RAC_UPDATE  1047    //czp 1042-->1044
-//#endif /* VENDOR_EDIT */
 
 /***********************************************************************/
 
