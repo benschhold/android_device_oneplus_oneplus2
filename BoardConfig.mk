@@ -73,9 +73,7 @@ TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_USES_UNCOMPRESSED_KERNEL := true
 
-# Kernel Toolchain
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
-KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
@@ -201,7 +199,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2684354560
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 59047394304
 BOARD_FLASH_BLOCK_SIZE := 262144
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
+
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
@@ -220,3 +218,32 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap_enable"
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus2/BoardConfigVendor.mk
+
+# MultiROM config.
+TARGET_RECOVERY_IS_MULTIROM := true
+MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
+MR_DPI := xhdpi
+MR_DPI_FONT := 340
+MR_DEV_BLOCK_BOOTDEVICE := true
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/oneplus/oneplus2/multirom/mr_init_devices.c
+MR_USE_QCOM_OVERLAY := true
+MR_QCOM_OVERLAY_HEADER := device/oneplus/oneplus2/multirom/mr_qcom_overlay.h
+MR_FSTAB := device/oneplus/oneplus2/recovery/root/etc/twrp.fstab
+MR_USE_MROM_FSTAB := false
+MR_KEXEC_MEM_MIN := 0x0
+MR_DEVICE_HOOKS := device/oneplus/oneplus2/multirom/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 6
+MR_USE_MROM_FSTAB := true
+DEVICE_RESOLUTION := 1080x1920
+MR_PIXEL_FORMAT := "RGBA_8888"
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
+
+include device/oneplus/oneplus2/MR_REC_VERSION.mk
+
+ifeq ($(MR_REC_VERSION),)
+MR_REC_VERSION := $(shell date -u +%Y%m%d)-01
+endif
+
+BOARD_MKBOOTIMG_ARGS += --board mrom$(MR_REC_VERSION)
