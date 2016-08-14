@@ -81,6 +81,20 @@ TARGET_USES_UNCOMPRESSED_KERNEL := true
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9-kernel/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 
+# Optimizations
+STRICT_ALIASING := true
+CLANG_O3 := true
+ENABLE_GCCONLY := false
+GRAPHITE_OPTS := false
+USE_PIPE := true  
+ENABLE_SANITIZE := true
+CORTEX_TUNINGS := true
+POLLY_OPTIMIZATION := true
+ENABLE_PTHREAD := true
+ENABLE_IPA ANALYSER := true
+ENABLE_GOMP := true
+ENABLE_EXTRAGCC := true
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
