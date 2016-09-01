@@ -16,6 +16,12 @@
 
 $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
+
+
+PRODUCT_COPY_FILES += \
+device/oneplus/oneplus2/kernel:kernel
+
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -57,8 +63,8 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-dalvik-heap.mk)
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-4096-hwui-memory.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -275,4 +281,4 @@ PRODUCT_PACKAGES += \
     hostapd.deny
 
 # Inherit from oppo-common
-$(call inherit-product, device/oppo/common/common.mk)
+#$(call inherit-product, device/oppo/common/common.mk)
