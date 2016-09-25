@@ -72,7 +72,7 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
 
 # Kernel Toolchain
-KERNEL_TOOLCHAIN := /home/bensch/toolchains/aarch64-linux-android-6.0/bin
+KERNEL_TOOLCHAIN := /home/bensch/toolchains/aarch64-linux-android-6.x-kernel/bin
 KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
 
 

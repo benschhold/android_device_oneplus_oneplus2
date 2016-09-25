@@ -1086,6 +1086,7 @@ on property:dev.bootcomplete=1
    write /sys/module/msm_hotplug/min_cpus_online 2
    write /sys/module/msm_hotplug/min_cpus_online_big 0
    write /sys/module/msm_hotplug/max_cpus_online_susp 1
+   write /sys/module/msm_hotplug/update_rate 400
 
    #Big cores off value
    write /sys/module/battery_current_limit/parameters/low_battery_value 8
