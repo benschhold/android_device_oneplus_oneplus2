@@ -594,12 +594,7 @@ void* ipa_driver_msg_notifier(void *param)
 			}
 			continue;
 
-		case WAN_XLAT_CONNECT:
-			memcpy(&event_wan, buffer + sizeof(struct ipa_msg_meta),
-				sizeof(struct ipa_wan_msg));
-			IPACMDBG_H("Received WAN_XLAT_CONNECT name: %s\n",
-					event_wan.upstream_ifname);
-
+	
 			/* post IPA_LINK_UP_EVENT event
 			 * may be WAN interface is not up
 			*/

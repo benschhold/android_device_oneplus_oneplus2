@@ -1,0 +1,13 @@
+add this to .repo/local_manifests
+
+<manifest>
+  <project path="device/oneplus/oneplus2" name="AOKP/device_oneplus_oneplus2/" remote="github" revision="mm" />
+  <project path="kernel/oneplus/msm8994" name="benschhold/android_kernel_oneplus_msm8994_custom" remote="github" revision="customb" />
+  <project path="vendor/oneplus" name="TheMuppets/proprietary_vendor_oneplus" remote="github" revision="cm-13.0" />
+ <project path="device/oppo/common" name="CyanogenMod/android_device_oppo_common" remote="github" revision="cm-13.0" />
+ <project path="device/qcom/common" name="CyanogenMod/android_device_qcom_common" remote="github" revision="cm-13.0" />
+ <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-6.x-kernel-linaro" name="DespairFactor/aarch64-linux-android-6.x-kernel-linaro" remote="bucket" />
+<remove-project name="platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" />
+ <project path="prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9" name="DespairFactor/aarch64-linux-android-4.9" remote="bucket" />
+
+</manifest>

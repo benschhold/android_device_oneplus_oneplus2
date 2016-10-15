@@ -14,5 +14,5 @@
 
 $(call inherit-product, device/oneplus/oneplus2/full_oneplus2.mk)
 
-# Inherit some common AOKP stuff.
-$(call inherit-product, vendor/aokp/configs/common_full_phone.mk)
+# Inherit some common RR stuff.
+$(call inherit-product, vendor/cm/config/common_full_phone.mk)
