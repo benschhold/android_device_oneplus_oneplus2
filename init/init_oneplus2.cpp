@@ -39,8 +39,6 @@ void init_variant_properties() {
     std::string device = property_get("ro.cm.device");
     std::string rf_version;
 
-    if (device != "oneplus2")
-        return;
 
     rf_version = property_get("ro.boot.rf_v1");
 
