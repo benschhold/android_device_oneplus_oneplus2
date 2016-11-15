@@ -1,3 +1,3 @@
-add_lunch_combo tesla_oneplus2-user
-add_lunch_combo tesla_oneplus2-userdebug
-add_lunch_combo tesla_oneplus2-eng
+add_lunch_combo slim_oneplus2-user
+add_lunch_combo slim_oneplus2-userdebug
+add_lunch_combo slim_oneplus2-eng
