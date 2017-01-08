@@ -1036,3 +1036,15 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqb
     group root
     disabled
     writepid /dev/cpuset/system-background/tasks
+
+on property:dev.bootcomplete=1
+
+   #MSM Hotplug
+   write /sys/module/msm_hotplug/msm_enabled 1
+   write /sys/module/msm_hotplug/max_cpus_online_big 4
+   write /sys/module/msm_hotplug/max_cpus_online 4
+   write /sys/module/msm_hotplug/min_cpus_online 2
+   write /sys/module/msm_hotplug/min_cpus_online_big 2
+   write /sys/module/msm_hotplug/max_cpus_online_susp 1
+   write /sys/module/msm_hotplug/update_rate 400
+   write /sys/module/msm_hotplug/online_load_big 35

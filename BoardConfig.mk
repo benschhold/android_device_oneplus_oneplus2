@@ -72,6 +72,10 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := cm_oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
+# Kernel Toolchain
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-6.x-kernel-linaro/bin
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-android-
+
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
