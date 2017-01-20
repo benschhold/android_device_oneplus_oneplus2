@@ -1045,6 +1045,6 @@ on property:dev.bootcomplete=1
    write /sys/module/msm_hotplug/max_cpus_online 4
    write /sys/module/msm_hotplug/min_cpus_online 2
    write /sys/module/msm_hotplug/min_cpus_online_big 1
-   write /sys/module/msm_hotplug/max_cpus_online_susp 1
+   write /sys/module/msm_hotplug/max_cpus_online_susp 3
    write /sys/module/msm_hotplug/update_rate 400
    write /sys/module/msm_hotplug/online_load_big 35
