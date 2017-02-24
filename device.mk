@@ -102,10 +102,10 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8994 \
+    mm-qcamera-app \
     libshim_camera \
-    libshim_ims-camera \
-    sensors.hal.tof \
-    Snap
+    libmm-qcamera \
+    sensors.hal.tof
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
